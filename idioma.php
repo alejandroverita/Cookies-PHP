@@ -9,7 +9,7 @@
 
 <?php
 
-    if (isset($_COOKIE["idioma_seleccionado"])) {
+    if (isset($_COOKIE["idioma_seleccionado"])) { //si la cookie del idioma ha sido selecionada o no 
 
 
         if($_COOKIE["idioma_seleccionado"]=="es") {

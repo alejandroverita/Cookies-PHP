@@ -11,8 +11,8 @@
 //rescata el valor encontrado en la URL selecionado de las banderas
 setcookie("idioma_selecionado", $_GET["idioma"], time()+86400);
 
-//redirecionamos al siguiente enlace
-header("Location:ver_cookie.php");
+//redirecionamos al siguiente enlace 
+header("Location:ver_cookie.php"); 
 
 ?>
 </body>
