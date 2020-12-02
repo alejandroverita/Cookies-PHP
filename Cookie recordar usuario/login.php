@@ -34,6 +34,9 @@
 <body>
 
 <?php
+//variable para ingresar AUN cuando no haya activado checkbox
+$autenticado=false;
+
 if (isset($_POST["enviar"])) {
     
 
@@ -67,7 +70,12 @@ if (isset($_POST["enviar"])) {
         //Evaluando si usuario existe o no. Existe devuelve 1. No existe devuelve 0
         if($numero_registro!=0){
             
-
+            //aqui el usuario ya ha ingresado, por lo tanto variable autenticado se vuelve TRUE
+            $autenticado=true;
+            
+            if(isset($_POST["recordar"])){ //si usuario ACTIVO casilla recordar
+                setcookie ("nombre_usuario", $_POST["login"], time() + 86400); //un mes de duracion la cookie
+            }
         }
         else
         {
@@ -85,15 +93,12 @@ if (isset($_POST["enviar"])) {
 ?>
 <?php
 
-//solamente se carge si es que se ha iniciado sesion
-
-if (!isset($_SESSION["usuario"])){//sino se ha iniciado sesion, no muestres formulario
-    include("formulario.html");
-} else {
-
-    //usuario almacenado en $_SESSION
-    echo "Usuario: " . $_SESSION["usuario"];
+if($autenticado==false){ //si usuario no se ha logeado y NO ha clickeado COOKIE entonces, muestrra el formulario
+    if(!isset($_COOKIE["nombre_usuario"])) {
+        include "formulario.html";
+    }
 }
+
 ?>
 
     <h2>CONTENIDO DE LA WEB</h2> 
@@ -107,10 +112,6 @@ if (!isset($_SESSION["usuario"])){//sino se ha iniciado sesion, no muestres form
             <td><img src="gato4.jpg" width="300" height="166"></td>
         </tr>
     </table>
-
-
-
-
 
 </body>
 </html>
