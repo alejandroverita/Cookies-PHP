@@ -99,6 +99,12 @@ if($autenticado==false){ //si usuario no se ha logeado y NO ha clickeado COOKIE 
     }
 }
 
+if(isset($_COOKIE["nombre_usuario"])) {
+    echo "Hola " . $_COOKIE["nombre_usuario"] . "!";
+} else if ($autenticado==true) {
+    echo "Hola " . $_POST["login"] . "!";
+}
+
 ?>
 
     <h2>CONTENIDO DE LA WEB</h2> 
@@ -112,6 +118,12 @@ if($autenticado==false){ //si usuario no se ha logeado y NO ha clickeado COOKIE 
             <td><img src="gato4.jpg" width="300" height="166"></td>
         </tr>
     </table>
+<?php
+if($autenticado==TRUE || isset($_COOKIE["nombre_usuario"])){
+    include "zonaregistrados.html";
+}
 
+
+?>
 </body>
 </html>
