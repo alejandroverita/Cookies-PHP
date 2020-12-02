@@ -14,7 +14,7 @@
 
 	//encriptacion. 1era parametro: info que queremos cifrar. 2do el modo de encriptacion
 
-	$pass_cifrado=password_hash($contrasenia, PASSWORD_DEFAULT);
+	$pass_cifrado=password_hash($contrasenia, PASSWORD_DEFAULT, array('cost'=>12));
 	
 	
 				
